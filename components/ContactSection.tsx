@@ -12,209 +12,227 @@ const ContactSection: React.FC = () => {
     city: '',
     serviceType: 'Combined',
     propertyType: 'Residential',
-    notes: ''
+    notes: '',
   });
+
   const [submitted, setSubmitted] = useState(false);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>,
+  ) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (formData.name && formData.contact) {
-      console.log("Form Submitted:", formData);
+      console.log('Form Submitted:', formData);
       setSubmitted(true);
       setTimeout(() => {
-          alert("Thank you! We will contact you shortly.");
+        alert('Thank you! We will contact you shortly.');
       }, 500);
     }
   };
 
   return (
-    <section id="contact" className="py-24 relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-t from-emerald-900/20 to-transparent pointer-events-none"></div>
+    <section id="contact" className="py-28 bg-slate-950/40 relative overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/80 to-transparent pointer-events-none" />
 
-      <div className="container mx-auto px-4 md:px-8 relative z-10">
-        <SectionTitle 
-           title={{ zh: "预约上门勘察", en: "Book a Site Visit" }}
+      <div className="container mx-auto px-4 md:px-10 relative z-10">
+        <SectionTitle
+          title={{ zh: '预 约 上 门 勘 察 ', en: 'Book a Site Visit' }}
+          subtitle={{
+            zh: '留 下 信 息 ， 我 们 会 尽 快 联 系 你 ',
+            en: 'Leave your details and we will get back to you soon.',
+          }}
         />
 
-        <div className="flex flex-col lg:flex-row gap-12 max-w-7xl mx-auto">
-          
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-start">
           {/* Left info */}
-          <div className="lg:w-1/3 space-y-8">
-             <FadeIn>
-               <div className="bg-gradient-to-br from-emerald-500 to-teal-600 p-8 rounded-3xl shadow-2xl text-white relative overflow-hidden">
-                  <div className="absolute top-0 right-0 w-40 h-40 bg-white/10 rounded-full blur-3xl -mr-10 -mt-10"></div>
-                  
-                  <h3 className="text-2xl font-bold mb-6">Contact Info</h3>
-                  <div className="space-y-6">
-                    <div className="flex items-center gap-4">
-                      <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center">
-                        <Mail size={20} />
-                      </div>
-                      <div>
-                        <div className="text-xs opacity-70 uppercase tracking-widest">Email</div>
-                        <div className="font-medium">contact@diynet-solar.com</div>
-                      </div>
-                    </div>
-                    <div className="flex items-center gap-4">
-                      <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center">
-                         <Phone size={20} />
-                      </div>
-                      <div>
-                        <div className="text-xs opacity-70 uppercase tracking-widest">Phone</div>
-                        <div className="font-medium">+95 9 123 456 789</div>
-                      </div>
-                    </div>
-                    <div className="flex items-center gap-4">
-                      <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center">
-                         <MapPin size={20} />
-                      </div>
-                      <div>
-                        <div className="text-xs opacity-70 uppercase tracking-widest">Location</div>
-                        <div className="font-medium">Mandalay, Myanmar</div>
-                      </div>
-                    </div>
+          <FadeIn delay={120}>
+            <div className="rounded-3xl border border-white/10 bg-slate-900/60 p-7 md:p-8 shadow-xl shadow-emerald-500/5 space-y-6">
+              <BilingualBlock
+                text={{
+                  zh: '联 系 方 式 / Contact Info',
+                  en: 'Contact Info',
+                }}
+                className="mb-4"
+                zhClassName="text-lg font-semibold text-white"
+                enClassName="text-sm text-slate-400"
+              />
+
+              <div className="space-y-4 text-sm text-slate-300">
+                <div className="flex items-start gap-3">
+                  <Mail className="w-4 h-4 mt-1 text-emerald-400" />
+                  <div>
+                    <div className="text-xs uppercase tracking-[0.2em] text-slate-500 mb-1">EMAIL</div>
+                    <a
+                      href="mailto:contact@diynet-solar.com"
+                      className="hover:text-emerald-400 transition-colors"
+                    >
+                      contact@diynet-solar.com
+                    </a>
                   </div>
-               </div>
-             </FadeIn>
-             
-             <FadeIn delay={200}>
-               <p className="text-slate-400 leading-relaxed px-2">
-                 <BilingualBlock 
-                    text={{ 
-                      zh: "填写右侧表单，我们的工程师将在 24 小时内联系您。", 
-                      en: "Fill out the form, and our engineer will contact you within 24 hours." 
-                    }} 
-                  />
-               </p>
-             </FadeIn>
-          </div>
+                </div>
+
+                <div className="flex items-start gap-3">
+                  <Phone className="w-4 h-4 mt-1 text-emerald-400" />
+                  <div>
+                    <div className="text-xs uppercase tracking-[0.2em] text-slate-500 mb-1">
+                      PHONE / WHATSAPP
+                    </div>
+                    <a
+                      href="tel:+959444010009"
+                      className="hover:text-emerald-400 transition-colors"
+                    >
+                      +95 9 444 010 009
+                    </a>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3">
+                  <MapPin className="w-4 h-4 mt-1 text-emerald-400" />
+                  <div>
+                    <div className="text-xs uppercase tracking-[0.2em] text-slate-500 mb-1">LOCATION</div>
+                    <p>Mandalay, Myanmar</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="mt-6 text-xs text-slate-400 space-y-1">
+                <p>服务城市：曼德勒及周边地区。</p>
+                <p>Service area: Mandalay and nearby regions.</p>
+              </div>
+            </div>
+          </FadeIn>
 
           {/* Right Form */}
-          <FadeIn delay={300} className="lg:w-2/3">
-            <div className="glass-card p-8 md:p-10 rounded-3xl">
+          <FadeIn delay={200}>
+            <div className="rounded-3xl border border-emerald-500/20 bg-slate-900/80 p-7 md:p-8 shadow-xl shadow-emerald-500/10">
               {submitted ? (
-                <div className="h-full flex flex-col items-center justify-center text-center py-20">
-                  <div className="w-20 h-20 bg-emerald-500/20 text-emerald-400 rounded-full flex items-center justify-center mb-6 shadow-[0_0_30px_rgba(16,185,129,0.3)]">
-                    <CheckCircle2Icon size={40} />
-                  </div>
-                  <h3 className="text-3xl font-bold text-white mb-2">提交成功</h3>
-                  <p className="text-slate-400">Request Submitted Successfully</p>
+                <div className="flex flex-col items-center justify-center py-16 text-center space-y-4">
+                  <CheckCircle2Icon size={40} />
+                  <div className="text-white font-semibold">提交成功</div>
+                  <div className="text-sm text-slate-400">Request Submitted Successfully</div>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                  
+                <form className="space-y-5" onSubmit={handleSubmit}>
                   {/* Name */}
-                  <div className="md:col-span-2">
-                    <label className="block text-xs font-bold text-emerald-400 uppercase tracking-wider mb-2">
-                      姓名 / Name
-                    </label>
-                    <input 
-                      type="text" 
-                      name="name" 
-                      required 
-                      className="w-full bg-white/5 border border-white/10 rounded-xl p-4 text-white placeholder-slate-500 focus:outline-none focus:border-emerald-500/50 focus:bg-white/10 transition-all"
-                      placeholder="Your Name"
+                  <div>
+                    <BilingualBlock
+                      text={{ zh: '姓名 / Name', en: 'Name' }}
+                      zhClassName="text-xs font-medium text-slate-200"
+                      enClassName="text-[11px] text-slate-500"
+                    />
+                    <input
+                      type="text"
+                      name="name"
+                      required
+                      value={formData.name}
                       onChange={handleChange}
+                      className="mt-2 w-full rounded-2xl bg-slate-900/80 border border-white/10 px-4 py-3 text-sm text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/70 focus:border-transparent"
+                      placeholder="请输入姓名 / Your name"
                     />
                   </div>
 
                   {/* Contact */}
                   <div>
-                    <label className="block text-xs font-bold text-emerald-400 uppercase tracking-wider mb-2">
-                      电话 / Phone
-                    </label>
-                    <input 
-                      type="text" 
-                      name="contact" 
-                      required 
-                      className="w-full bg-white/5 border border-white/10 rounded-xl p-4 text-white placeholder-slate-500 focus:outline-none focus:border-emerald-500/50 focus:bg-white/10 transition-all"
-                      placeholder="+95 ..."
+                    <BilingualBlock
+                      text={{ zh: '电话 / Phone / WhatsApp', en: 'Phone / WhatsApp' }}
+                      zhClassName="text-xs font-medium text-slate-200"
+                      enClassName="text-[11px] text-slate-500"
+                    />
+                    <input
+                      type="text"
+                      name="contact"
+                      required
+                      value={formData.contact}
                       onChange={handleChange}
+                      className="mt-2 w-full rounded-2xl bg-slate-900/80 border border-white/10 px-4 py-3 text-sm text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/70 focus:border-transparent"
+                      placeholder="+95 9 444 010 009"
                     />
                   </div>
 
                   {/* City */}
                   <div>
-                    <label className="block text-xs font-bold text-emerald-400 uppercase tracking-wider mb-2">
-                      城市 / City
-                    </label>
-                    <input 
-                      type="text" 
-                      name="city" 
-                      className="w-full bg-white/5 border border-white/10 rounded-xl p-4 text-white placeholder-slate-500 focus:outline-none focus:border-emerald-500/50 focus:bg-white/10 transition-all"
-                      placeholder="Mandalay"
+                    <BilingualBlock
+                      text={{ zh: '城市 / City', en: 'City' }}
+                      zhClassName="text-xs font-medium text-slate-200"
+                      enClassName="text-[11px] text-slate-500"
+                    />
+                    <input
+                      type="text"
+                      name="city"
+                      value={formData.city}
                       onChange={handleChange}
+                      className="mt-2 w-full rounded-2xl bg-slate-900/80 border border-white/10 px-4 py-3 text-sm text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/70 focus:border-transparent"
+                      placeholder="Mandalay / City"
                     />
                   </div>
 
                   {/* Service Type */}
                   <div>
-                    <label className="block text-xs font-bold text-emerald-400 uppercase tracking-wider mb-2">
-                      需求类型 / Service
-                    </label>
-                    <div className="relative">
-                      <select 
-                        name="serviceType" 
-                        className="w-full bg-white/5 border border-white/10 rounded-xl p-4 text-white focus:outline-none focus:border-emerald-500/50 focus:bg-white/10 transition-all appearance-none cursor-pointer"
-                        onChange={handleChange}
-                        value={formData.serviceType}
-                      >
-                        <option className="bg-slate-900" value="Network">网络 / Network</option>
-                        <option className="bg-slate-900" value="Solar">光伏 / Solar</option>
-                        <option className="bg-slate-900" value="Low-Voltage">弱电 / Low-Voltage</option>
-                        <option className="bg-slate-900" value="Combined">组合 / Combined</option>
-                      </select>
-                      <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400">▼</div>
-                    </div>
+                    <BilingualBlock
+                      text={{ zh: '需求类型 / Service', en: 'Service Type' }}
+                      zhClassName="text-xs font-medium text-slate-200"
+                      enClassName="text-[11px] text-slate-500"
+                    />
+                    <select
+                      name="serviceType"
+                      value={formData.serviceType}
+                      onChange={handleChange}
+                      className="mt-2 w-full rounded-2xl bg-slate-900/80 border border-white/10 px-4 py-3 text-sm text-white focus:outline-none focus:ring-2 focus:ring-emerald-500/70 focus:border-transparent"
+                    >
+                      <option value="Network">网络 / Network</option>
+                      <option value="Solar">光伏 / Solar</option>
+                      <option value="LowVoltage">弱电 / Low-Voltage</option>
+                      <option value="Combined">组合 / Combined</option>
+                    </select>
                   </div>
 
                   {/* Property Type */}
                   <div>
-                     <label className="block text-xs font-bold text-emerald-400 uppercase tracking-wider mb-2">
-                      现场类型 / Property
-                    </label>
-                    <div className="relative">
-                      <select 
-                        name="propertyType" 
-                        className="w-full bg-white/5 border border-white/10 rounded-xl p-4 text-white focus:outline-none focus:border-emerald-500/50 focus:bg-white/10 transition-all appearance-none cursor-pointer"
-                        onChange={handleChange}
-                        value={formData.propertyType}
-                      >
-                        <option className="bg-slate-900" value="Residential">家用 / Residential</option>
-                        <option className="bg-slate-900" value="Shop">商铺 / Shop</option>
-                        <option className="bg-slate-900" value="Small Factory">小型工厂 / Factory</option>
-                      </select>
-                      <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400">▼</div>
-                    </div>
+                    <BilingualBlock
+                      text={{ zh: '现场类型 / Property', en: 'Property Type' }}
+                      zhClassName="text-xs font-medium text-slate-200"
+                      enClassName="text-[11px] text-slate-500"
+                    />
+                    <select
+                      name="propertyType"
+                      value={formData.propertyType}
+                      onChange={handleChange}
+                      className="mt-2 w-full rounded-2xl bg-slate-900/80 border border-white/10 px-4 py-3 text-sm text-white focus:outline-none focus:ring-2 focus:ring-emerald-500/70 focus:border-transparent"
+                    >
+                      <option value="Residential">家用 / Residential</option>
+                      <option value="Shop">商铺 / Shop</option>
+                      <option value="Factory">小型工厂 / Factory</option>
+                    </select>
                   </div>
 
                   {/* Notes */}
-                  <div className="md:col-span-2">
-                    <label className="block text-xs font-bold text-emerald-400 uppercase tracking-wider mb-2">
-                      备注 / Notes
-                    </label>
-                    <textarea 
-                      name="notes" 
-                      rows={4}
-                      className="w-full bg-white/5 border border-white/10 rounded-xl p-4 text-white placeholder-slate-500 focus:outline-none focus:border-emerald-500/50 focus:bg-white/10 transition-all resize-none"
-                      placeholder="Describe your requirements..."
+                  <div>
+                    <BilingualBlock
+                      text={{ zh: '备注 / Notes', en: 'Notes' }}
+                      zhClassName="text-xs font-medium text-slate-200"
+                      enClassName="text-[11px] text-slate-500"
+                    />
+                    <textarea
+                      name="notes"
+                      value={formData.notes}
                       onChange={handleChange}
-                    ></textarea>
+                      rows={4}
+                      className="mt-2 w-full rounded-2xl bg-slate-900/80 border border-white/10 px-4 py-3 text-sm text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/70 focus:border-transparent"
+                      placeholder="简单描述一下现场与需求 / Briefly describe your site and needs"
+                    />
                   </div>
 
-                  <div className="md:col-span-2 mt-4">
-                    <button type="submit" className="w-full bg-gradient-to-r from-emerald-500 to-teal-600 hover:to-teal-500 text-white font-bold py-5 rounded-xl transition-all shadow-[0_0_20px_rgba(16,185,129,0.3)] hover:shadow-[0_0_30px_rgba(16,185,129,0.5)] flex items-center justify-center gap-3 group">
-                      <Send size={20} className="group-hover:-translate-y-1 group-hover:translate-x-1 transition-transform" />
-                      <div>
-                        <span className="block leading-none mb-1">提交申请</span>
-                        <span className="block text-[10px] font-normal opacity-80 uppercase tracking-widest leading-none">Submit Request</span>
-                      </div>
-                    </button>
-                  </div>
+                  <button
+                    type="submit"
+                    className="mt-2 inline-flex items-center justify-center gap-2 w-full rounded-2xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 text-sm font-semibold py-3.5 transition-colors"
+                  >
+                    <Send size={16} />
+                    <span>提交申请 / Submit Request</span>
+                  </button>
                 </form>
               )}
             </div>
@@ -227,9 +245,20 @@ const ContactSection: React.FC = () => {
 
 // Helper icon
 const CheckCircle2Icon = ({ size }: { size: number }) => (
-  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <circle cx="12" cy="12" r="10"/>
-    <path d="m9 12 2 2 4-4"/>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    className="text-emerald-400"
+    width={size}
+    height={size}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <path d="M9 12l2 2 4-4" />
+    <circle cx="12" cy="12" r="9" />
   </svg>
 );
 

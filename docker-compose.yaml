@@ -4,7 +4,7 @@ services:
     image: nginx:alpine
     container_name: diynet-web
     ports:
-      - "8088:80"
+      - "8888:80"
     volumes:
       - ./dist:/usr/share/nginx/html:ro
     restart: always
