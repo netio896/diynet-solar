@@ -1,0 +1,10 @@
+
+services:
+  diynet-web:
+    image: nginx:alpine
+    container_name: diynet-web
+    ports:
+      - "8088:80"
+    volumes:
+      - ./dist:/usr/share/nginx/html:ro
+    restart: always
