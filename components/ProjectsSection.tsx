@@ -1,17 +1,44 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { PROJECTS } from '../constants';
 import SectionTitle from './ui/SectionTitle';
 import BilingualBlock from './ui/BilingualBlock';
 import FadeIn from './ui/FadeIn';
-import { Clock, Zap } from 'lucide-react';
+import { Clock, Zap, X, ChevronLeft, ChevronRight } from 'lucide-react';
 
 const ProjectsSection: React.FC = () => {
+  const [viewer, setViewer] = useState<{
+    images: string[];
+    index: number;
+  } | null>(null);
+
+  const openViewer = (images: string[], index: number) => {
+    setViewer({ images, index });
+  };
+
+  const closeViewer = () => setViewer(null);
+
+  const prevImage = () => {
+    if (!viewer) return;
+    setViewer({
+      ...viewer,
+      index: viewer.index === 0 ? viewer.images.length - 1 : viewer.index - 1,
+    });
+  };
+
+  const nextImage = () => {
+    if (!viewer) return;
+    setViewer({
+      ...viewer,
+      index: viewer.index === viewer.images.length - 1 ? 0 : viewer.index + 1,
+    });
+  };
+
   return (
     <section id="projects" className="py-28 relative">
       <div className="container mx-auto px-4 md:px-10">
         <SectionTitle
           title={{ zh: '真 实 工 程 案 例', en: 'Real Projects' }}
-          subtitle={{ zh: '每 个 项 目 独 立 展 示', en: 'Each project displayed independently' }}
+          subtitle={{ zh: '点 击 图 片 可 全 屏 查 看', en: 'Tap images for fullscreen preview' }}
         />
 
         <div className="space-y-32">
@@ -27,7 +54,8 @@ const ProjectsSection: React.FC = () => {
                     {images.map((img, i) => (
                       <div
                         key={i}
-                        className="relative w-full aspect-[4/3] overflow-hidden rounded-2xl bg-black"
+                        onClick={() => openViewer(images, i)}
+                        className="relative w-full aspect-[4/3] overflow-hidden rounded-2xl bg-black cursor-zoom-in"
                       >
                         <img
                           src={img}
@@ -71,6 +99,50 @@ const ProjectsSection: React.FC = () => {
           })}
         </div>
       </div>
+
+      {/* ✅ 全屏预览灯箱 */}
+      {viewer && (
+        <div
+          className="fixed inset-0 bg-black/90 z-[9999] flex items-center justify-center"
+          onClick={closeViewer}
+        >
+          <div
+            className="relative max-w-6xl w-full px-6"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <img
+              src={viewer.images[viewer.index]}
+              className="w-full max-h-[85vh] object-contain rounded-xl"
+            />
+
+            {/* 关闭按钮 */}
+            <button
+              onClick={closeViewer}
+              className="absolute top-4 right-4 bg-black/60 p-2 rounded-full text-white hover:bg-black"
+            >
+              <X size={22} />
+            </button>
+
+            {/* 左右切换 */}
+            {viewer.images.length > 1 && (
+              <>
+                <button
+                  onClick={prevImage}
+                  className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/60 p-2 rounded-full text-white hover:bg-black"
+                >
+                  <ChevronLeft size={28} />
+                </button>
+                <button
+                  onClick={nextImage}
+                  className="absolute right-2 top-1/2 -translate-y-1/2 bg-black/60 p-2 rounded-full text-white hover:bg-black"
+                >
+                  <ChevronRight size={28} />
+                </button>
+              </>
+            )}
+          </div>
+        </div>
+      )}
     </section>
   );
 };

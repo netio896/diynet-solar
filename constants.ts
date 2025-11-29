@@ -83,7 +83,8 @@ export const PROJECTS: ProjectItem[] = [
       "https://cloud.diynet.club/raw/public/solar/deye%2070kw/1",
       "https://cloud.diynet.club/raw/public/solar/deye%2070kw/2",
       "https://cloud.diynet.club/raw/public/solar/deye%2070kw/3",
-      "https://cloud.diynet.club/raw/public/solar/deye%2070kw/4"
+      "https://cloud.diynet.club/raw/public/solar/deye%2070kw/4",
+      "https://cloud.diynet.club/raw/public/solar/deye%2070kw/5"
     ]
   },
 
