@@ -140,3 +140,34 @@ export const ABOUT_CONTENT = {
     en: "Diynet Solar is an engineering service provider specializing in distributed solar PV and home low-voltage systems. Based in Mandalay and surrounding areas, we provide stable and reliable power and network infrastructure for homes, villas, and small businesses with a focus on long-term delivery."
   }
 };
+
+/* ==== Auto-Appended: Network Project (MDY) ==== */
+export const PROJECT_NETWORK_MDY = {
+  id: "network-mdY",
+  title: {
+    zh: "企业级全场域网络升级工程",
+    my: "ကုမ္ပဏီအဆင့် Network မြှင့်တင်ခြင်းလုပ်ငန်း"
+  },
+  description: {
+    zh: "本项目提供整栋建筑的企业级网络升级：光纤主干、室外级六类A布线、PoE供电层、弱电桥架、网络机柜与 UPS 稳定供电，强化缅甸金属屋顶与不稳定电力环境下的网络可靠性。",
+    my: "ဒီ Project မှာ တစ်လုံးလုံးအဆောင်အတွက် Fiber backbone၊ Outdoor CAT6A ကြိုးခင်း၊ PoE switch layer၊ Weak-current bridge၊ Rack + UPS တပ်ဆင်ခြင်းတို့ကို လုံးဝလုံခြုံတိကျစွာ ဆောင်ရွက်ထားပါတယ်။ မြန်မာနိုင်ငံရဲ့ မီးပြတ်များခြင်းနှင့် သံမိုးကြောင့် RF ချို့ယွင်းမှုများကိုပါ ဆောင်ရွက်အားကောင်းစွာ ဖြေရှင်းထားပါတယ်။"
+  },
+  category: "network",
+  features: [
+    { zh: "室外级 CAT6A 全路由布线", my: "Outdoor-grade CAT6A ကြိုးတော်လုံးခင်း" },
+    { zh: "PoE 交换机部署与全楼层供电", my: "PoE switch တပ်ဆင်ခြင်း + အထပ်တိုင်းကို power ပေးခြင်း" },
+    { zh: "金属屋顶干扰优化与稳定方案", my: "သံမိုးခေါင်မိုး RF ပြဿနာ ကာကွယ်ရေး" },
+    { zh: "标准机柜 + UPS 稳定供电体系", my: "Rack system + UPS တပ်ဆင်ပြီး ထိရောက်တဲ့ မီးအားထောက်ပံ့မှု" }
+  ],
+  images: [
+    "https://cloud.diynet.club/raw/public/network/MDY/1",
+    "https://cloud.diynet.club/raw/public/network/MDY/2",
+    "https://cloud.diynet.club/raw/public/network/MDY/3"
+  ]
+};
+
+/* Auto-inject into PROJECTS if it exists */
+if (typeof PROJECTS !== "undefined" && Array.isArray(PROJECTS)) {
+  PROJECTS.push(PROJECT_NETWORK_MDY);
+}
+
