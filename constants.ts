@@ -1,139 +1,135 @@
-// constants.ts
 
-// Brand name used throughout the app
+import { NavItem, ServiceItem, ProjectItem, WorkflowStep, WhyUsPoint, BilingualText } from './types';
+
 export const BRAND_NAME = "Diynet Solar";
 
-// Navigation items for the navbar
-export const NAV_ITEMS = [
-  { label: { zh: "首  页", en: "Home" }, href: "#hero" },
-  { label: { zh: "服  务", en: "Services" }, href: "#services" },
-  { label: { zh: "工  程  案  例", en: "Projects" }, href: "#projects" },
-  { label: { zh: "关  于  我  们", en: "About" }, href: "#about" },
-  { label: { zh: "联  系  我  们", en: "Contact" }, href: "#contact" },
-  { label: { zh: "管  理  员  登  录", en: "Admin" }, href: "#admin" },
+export const NAV_ITEMS: NavItem[] = [
+  { label: { zh: "首页", en: "Home" }, href: "#hero" },
+  { label: { zh: "技术服务", en: "Engineering" }, href: "#services" },
+  { label: { zh: "交付案例", en: "Deliverables" }, href: "#projects" },
+  { label: { zh: "关于我们", en: "About" }, href: "#about" },
+  { label: { zh: "需求咨询", en: "Consultation" }, href: "#contact" },
 ];
 
-// Hero section content
 export const HERO_CONTENT = {
-  title: { zh: "光 伏 系 统", en: "Solar Systems" },
+  title: {
+    zh: "专业光伏、网络与弱电工程，打造高可靠性数字基础设施",
+    en: "Professional Solar, Network & Low-Voltage Engineering for Reliable Digital Infrastructure."
+  },
   subtitle: {
-    zh: "从家庭到商业，我们只做能长期稳定运行的工程。",
-    en: "From homes to small businesses, we focus on systems that run reliably for the long term.",
+    zh: "深耕 Mandalay，我们专注于从勘察设计到标准化施工的闭环交付，拒绝外包，只为长期稳定运行而生。",
+    en: "Based in Mandalay, we focus on closed-loop delivery from survey to standardized construction. No outsourcing, built for long-term stability."
   },
-  ctaPrimary: { zh: "获取工程方案", en: "Get a project plan" },
-  ctaSecondary: { zh: "查看施工标准", en: "View installation standards" },
+  ctaPrimary: { zh: "预约专家上门", en: "Request Engineering Survey" },
+  ctaSecondary: { zh: "查看技术标准", en: "View Technical Standards" }
 };
 
-// About content
-export const ABOUT_CONTENT = {
-  intro: {
-    zh: "我们是一支扎根曼德勒的工程团队，擅长光伏、储能、弱电与网络集成，所有方案以安全与长期可维护为第一优先。",
-    en: "We are an engineering team in Mandalay focused on solar, storage, low-voltage, and network integration, prioritizing safety and long-term maintainability.",
-  },
-};
-
-// Services offered by the company
-export const SERVICES = [
+export const SERVICES: ServiceItem[] = [
   {
     id: "network",
-    title: { zh: "家用 & 商业网络", en: "Home & Business Network Systems" },
+    title: { zh: "企业级网络与结构化布线", en: "Enterprise Network & Structured Cabling" },
     icon: "Network",
     points: [
-      { zh: "全屋有线布线", en: "Whole-house wired cabling" },
-      { zh: "Wi-Fi优化", en: "Wi-Fi optimization" },
-      { zh: "NAS集成", en: "NAS integration" },
-    ],
+      { zh: "Cat6/光纤骨干布线与弱电井整改", en: "Cat6/Fiber backbone cabling & MDF/IDF rectification" },
+      { zh: "多 AP 无缝漫游与高可用路由方案", en: "Multi-AP seamless roaming & high-availability routing" },
+      { zh: "私有云存储(NAS)与专用网络隔离规划", en: "Private cloud (NAS) & dedicated network VLAN planning" }
+    ]
   },
   {
     id: "solar",
-    title: { zh: "光伏发电 & 储能", en: "Solar PV & Battery Storage" },
+    title: { zh: "分布式光伏与多能源储能系统", en: "Distributed Solar & Multi-Energy Storage" },
     icon: "Sun",
     points: [
-      { zh: "屋顶光伏", en: "Roof-mounted solar" },
-      { zh: "电池储能", en: "Battery storage" },
-      { zh: "远程监控", en: "Remote monitoring" },
-    ],
+      { zh: "6kW-150kW 高性能并离网混合系统", en: "6kW-150kW high-performance hybrid systems" },
+      { zh: "磷酸铁锂(LiFePO4)储能与 UPS 级切电", en: "LiFePO4 storage & UPS-grade power switching" },
+      { zh: "云端智能运维与本地 EMS 监控集成", en: "Cloud intelligent O&M & local EMS integration" }
+    ]
   },
-  // Add other services here...
+  {
+    id: "cctv",
+    title: { zh: "工业级安防监控与智能控制", en: "Industrial Surveillance & Smart Control" },
+    icon: "Shield",
+    points: [
+      { zh: "4K/全彩 AI 监控系统与远程联防", en: "4K/Full-color AI surveillance & remote defense" },
+      { zh: "智能门禁、联动报警与周界防护", en: "Smart access control & perimeter protection" },
+      { zh: "一体化机柜集成与动力环境监测", en: "Integrated rack systems & power/env monitoring" }
+    ]
+  }
 ];
 
-// Workflow steps for the installation process
-export const WORKFLOW_STEPS = [
+export const PROJECTS: ProjectItem[] = [
   {
-    step: 1,
-    title: { zh: "现场勘察", en: "Site Survey" },
-    description: { zh: "测量屋顶结构与配电条件，确认安全路径。", en: "Measure roof structure and electrical conditions to confirm safe routing." },
-  },
-  {
-    step: 2,
-    title: { zh: "方案设计", en: "System Design" },
-    description: { zh: "给出光伏容量、逆变器与电池匹配方案，并出具材料清单。", en: "Propose PV size, inverter and battery pairing, plus a bill of materials." },
-  },
-  {
-    step: 3,
-    title: { zh: "安装施工", en: "Installation" },
-    description: { zh: "依照工艺标准完成结构、防水、布线与保护措施。", en: "Build per standards: structure, waterproofing, cabling, and protection." },
-  },
-  {
-    step: 4,
-    title: { zh: "调试验收", en: "Testing & Handover" },
-    description: { zh: "联调逆变器与监控，进行满载与安全测试。", en: "Commission inverter and monitoring, perform load and safety tests." },
-  },
-  {
-    step: 5,
-    title: { zh: "售后服务", en: "After-sales Service" },
-    description: { zh: "提供巡检、日志检查与远程支持，保持系统长期在线。", en: "Provide inspections, log reviews, and remote support to keep systems online." },
-  },
-];
-
-// Projects data (example)
-export const PROJECTS = [
-  {
-    id: "deye-70kw",
-    title: { zh: "Deye 70 kW 工商业屋顶", en: "Deye 70 kW C&I Rooftop" },
+    id: "p1",
+    title: { zh: "工商业级配电与防雷中心", en: "Industrial-Grade Power Distribution & SPD Center" },
     details: {
       capacity: "70 kW",
-      duration: "14 Days",
-      purpose: { zh: "工商业备电 + 降本", en: "C&I backup + savings" },
+      duration: "12 Days",
+      purpose: { zh: "高标准配电安全性", en: "High-Standard Electrical Safety" }
     },
-    image: "https://cloud.diynet.club/raw/public/solar/deye%2070kw/1",
-    images: [
-      "https://cloud.diynet.club/raw/public/solar/deye%2070kw/1",
-      "https://cloud.diynet.club/raw/public/solar/deye%2070kw/2",
-      "https://cloud.diynet.club/raw/public/solar/deye%2070kw/3",
-      "https://cloud.diynet.club/raw/public/solar/deye%2070kw/4",
-      "https://cloud.diynet.club/raw/public/solar/deye%2070kw/5",
-    ],
-    extra: {
-      inverter: "Deye 70 kW Hybrid",
-      battery: "LFP 80 kWh",
-      grid: "Hybrid",
-      location: "Mandalay",
-      status: "Delivered",
-    },
+    image: "https://cloud.diytv.site/raw/public/solar/deye%2070kw/20251228_165849.jpg",
+    badge: { zh: "标准化直流/交流柜 · 精密布线", en: "Standard DC/AC Cabinet · Precision Wiring" }
   },
-  // Add other projects here...
+  {
+    id: "p2",
+    title: { zh: "屋顶高性能光伏阵列部署", en: "High-Performance Rooftop PV Array" },
+    details: {
+      capacity: "70 kW",
+      duration: "InProgress",
+      purpose: { zh: "最大化发电增益", en: "Maximize Generation Yield" }
+    },
+    image: "https://cloud.diytv.site/raw/public/solar/deye%2070kw/1",
+    badge: { zh: "双面双玻组件 · 铝合金支架", en: "Bi-facial Modules · Al-Alloy Racking" }
+  },
+  {
+    id: "p3",
+    title: { zh: "Deye 三相混合储能系统集成", en: "Deye 3-Phase Hybrid Storage Integration" },
+    details: {
+      capacity: "70 kW",
+      duration: "8 Days",
+      purpose: { zh: "全天候能源自治", en: "24/7 Energy Autonomy" }
+    },
+    image: "https://cloud.diytv.site/raw/public/solar/deye%2070kw/20251228_170315.jpg",
+    badge: { zh: "三相不平衡负载支持 · 储能阵列", en: "3-Phase Unbalanced Load · Battery Array" }
+  },
+  {
+    id: "p4",
+    title: { zh: "机房动力环境与网络柜交付", en: "Data Room Power & Network Cabinet" },
+    details: {
+      capacity: "N/A",
+      duration: "5 Days",
+      purpose: { zh: "系统中心化管理", en: "Centralized System Management" }
+    },
+    image: "https://cloud.diytv.site/raw/public/solar/deye%2070kw/4",
+    badge: { zh: "结构化布线 · 核心交换系统", en: "Structured Cabling · Core Switching" }
+  }
 ];
 
-// Why choose us points
+export const WORKFLOW_STEPS: WorkflowStep[] = [
+  { step: 1, title: { zh: "深度勘测", en: "Technical Audit" }, description: { zh: "电力负荷分析与屋顶载荷建模", en: "Load analysis & rooftop structural modeling" } },
+  { step: 2, title: { zh: "工程设计", en: "Engineering Design" }, description: { zh: "单线图设计与 BOM 系统配置", en: "SLD design & BOM configuration" } },
+  { step: 3, title: { zh: "标准化施工", en: "Standardized Build" }, description: { zh: "自营技工团队，施工规范高于国标", en: "In-house pros, exceeding industry standards" } },
+  { step: 4, title: { zh: "测试调优", en: "Commissioning" }, description: { zh: "绝缘测试、热成像与联调优化", en: "Insulation testing & thermal imaging" } },
+  { step: 5, title: { zh: "终身运维", en: "Lifecycle O&M" }, description: { zh: "7x24 远程监控与定期现场回访", en: "24/7 remote monitoring & preventive visits" } },
+];
+
 export const WHY_US = {
   pros: [
-    {
-      title: { zh: "结构与安全先行", en: "Structure and safety first" },
-      description: { zh: "优先做防水、接地与过流保护，降低全生命周期风险。", en: "Prioritize waterproofing, grounding, and overcurrent protection to cut lifecycle risk." },
-    },
-    {
-      title: { zh: "监控与可观测性", en: "Monitoring and observability" },
-      description: { zh: "设备上线即接入远程监控，异常能第一时间发现。", en: "Every device joins remote monitoring on day one to surface anomalies quickly." },
-    },
-    {
-      title: { zh: "本地快速响应", en: "Local rapid response" },
-      description: { zh: "曼德勒本地团队，安装、运维与扩容都能快速到场。", en: "Mandalay-based crew for fast installs, maintenance, and expansions." },
-    },
-  ],
+    { title: { zh: "拒绝外包：自营核心工程团队", en: "Zero Outsourcing: In-house Engineering Team" }, description: { zh: "确保每一个接头、每一个支架都符合 Diynet 交付标准。", en: "Ensuring every connector and bracket meets Diynet delivery standards." } },
+    { title: { zh: "仓储现货：关键备件 0 等待", en: "Local Stock: Zero Lead-time for Spares" }, description: { zh: "Mandalay 本地仓库，保障紧急维修与快速交付。", en: "Local Mandalay warehouse for rapid repair and fast delivery." } },
+    { title: { zh: "架构协同：光伏+网络一体化规划", en: "Architectural Synergy: Solar + Network Integration" }, description: { zh: "从源头解决网络干扰、地线回路等复杂的弱电兼容问题。", en: "Solving complex compatibility issues like signal interference at the source." } },
+    { title: { zh: "透明交付：完整的验收报告与培训", en: "Transparent Delivery: Full Handover & Training" }, description: { zh: "提供完整竣工图纸、测试报告，并手把手教会您系统管理。", en: "Providing full as-built drawings and hands-on system training." } },
+  ] as WhyUsPoint[],
   cons: [
-    { zh: "只做符合标准的项目，无法低价抢工。", en: "We only take standard-compliant work; we do not undercut on safety." },
-    { zh: "需要现场勘察后给出报价，不提供口头估价。", en: "We provide quotes after a site survey; no verbal estimates." },
-    { zh: "施工周期按工艺走，可能不适合极短工期。", en: "Schedules follow process quality and may not fit ultra-short deadlines." },
-  ],
+    { zh: "临时雇员组成的“游击队”", en: "Temporary 'guerrilla' worker teams" },
+    { zh: "无本地仓储，售后遥遥无期", en: "No local stock, endless wait for service" },
+    { zh: "各系统独立施工，互不兼容", en: "Incompatible systems from multiple vendors" },
+    { zh: "装完收钱，无图纸无后期", en: "Pay-and-leave, no documentation provided" }
+  ] as BilingualText[]
+};
+
+export const ABOUT_CONTENT = {
+  intro: {
+    zh: "Diynet Solar 不仅仅是安装商，更是您在缅甸的数字化与能源基础设施合作伙伴。我们专注分布式光伏(PV)与高标准弱电布线，服务范围覆盖 Mandalay 及其周边地区。我们坚持“工程质量即生命”，通过标准化的技术流程，为高端住宅及中小企业提供真正可持续的电力与网络解决方案。",
+    en: "Diynet Solar is more than an installer; we are your digital and energy infrastructure partner in Myanmar. Specializing in Distributed PV and high-standard low-voltage cabling, we serve Mandalay and surrounding areas. We adhere to the philosophy that 'Engineering Quality is Life,' providing truly sustainable power and network solutions for high-end residences and SMEs through standardized technical processes."
+  }
 };

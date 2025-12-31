@@ -1,6 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react';
 
-export const FadeIn = ({ children, delay = 0, className = "" }: { children: React.ReactNode, delay?: number, className?: string }) => {
+interface FadeInProps {
+  children: React.ReactNode;
+  delay?: number;
+  className?: string;
+}
+
+export const FadeIn: React.FC<FadeInProps> = ({ children, delay = 0, className = "" }) => {
   const [isVisible, setIsVisible] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 

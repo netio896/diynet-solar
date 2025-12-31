@@ -1,3 +1,4 @@
+
 export interface BilingualText {
   zh: string;
   en: string;
@@ -24,6 +25,7 @@ export interface ProjectItem {
     purpose: BilingualText;
   };
   image: string;
+  badge?: BilingualText;
 }
 
 export interface WorkflowStep {
